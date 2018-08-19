@@ -1,0 +1,9 @@
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\bin\Debug\netstandard2.0\HMCalendar.deps.json
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\bin\Debug\netstandard2.0\HMCalendar.dll
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\bin\Debug\netstandard2.0\HMCalendar.pdb
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\obj\Debug\netstandard2.0\HMCalendar.csprojAssemblyReference.cache
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\obj\Debug\netstandard2.0\HMCalendar.csproj.CoreCompileInputs.cache
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\obj\Debug\netstandard2.0\HMCalendar.AssemblyInfoInputs.cache
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\obj\Debug\netstandard2.0\HMCalendar.AssemblyInfo.cs
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\obj\Debug\netstandard2.0\HMCalendar.dll
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar\obj\Debug\netstandard2.0\HMCalendar.pdb
