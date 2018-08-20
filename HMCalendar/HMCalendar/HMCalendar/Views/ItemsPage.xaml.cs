@@ -16,13 +16,13 @@ namespace HMCalendar.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ItemsPage : ContentPage
 	{
-        ItemsViewModel viewModel;
+        private readonly ItemsViewModel _viewModel;
 
         public ItemsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new ItemsViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -46,8 +46,8 @@ namespace HMCalendar.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (_viewModel.Items.Count == 0)
+                _viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }

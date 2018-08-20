@@ -1,5 +1,5 @@
 ﻿using System;
-
+using HMCalendar.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,17 +9,23 @@ namespace HMCalendar.Views
 	public partial class CalendarPage : ContentPage
 	{
 	    private const int MaxMonthDays = 30;
+	    private CalendarViewModel _calendarVM;
 
 		public CalendarPage ()
 		{
 			InitializeComponent ();
 
-		    var layout = new StackLayout();
+		    BindingContext = _calendarVM = new CalendarViewModel()
+		    {
+                
+		    };
+
+            var layout = new StackLayout();
 
 		    var headerLayout = new StackLayout
 		    {
-		        BackgroundColor = new Color(150, 209, 255, 255),
-		        HorizontalOptions = LayoutOptions.Fill
+		        BackgroundColor = Color.FromHex(_calendarVM.SeasonColor),
+		        HorizontalOptions = LayoutOptions.Fill,
 		    };
 
             var labelLayout = new StackLayout
@@ -30,14 +36,18 @@ namespace HMCalendar.Views
                 Padding = new Thickness(0,20,0,20)
             };
 
+            // add left arrow
+
             labelLayout.Children.Add(
                 new Label
                 {
-                    Text = "Summer", // todo
+                    Text = _calendarVM.Season, // todo
                     VerticalOptions = LayoutOptions.Center,
                     HeightRequest = 20
                 }
             );
+
+            // add right arrow
 
             headerLayout.Children.Add(labelLayout);
             layout.Children.Add(headerLayout);
