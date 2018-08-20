@@ -28,36 +28,55 @@ namespace HMCalendar.Views
 		        HorizontalOptions = LayoutOptions.Fill,
 		    };
 
-            var labelLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-                Padding = new Thickness(0,20,0,20)
+		    var labelLayout = new Grid
+		    {
+		        Padding = new Thickness(10),
+                ColumnSpacing = 8,
+		        HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
+		    labelLayout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+		    labelLayout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+		    labelLayout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
             // add left arrow
+		    var leftTapGestureRecognizer = new TapGestureRecognizer();
+		    leftTapGestureRecognizer.Tapped += (s, e) => {
+		        // handle the tap
+		    };
+
             labelLayout.Children.Add(
                 new Image
                 {
-                    Source = "circle_left.png"
-                });
+                    Source = "circle_left.png",
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Start,
+                    GestureRecognizers = { leftTapGestureRecognizer }
+                }, 0, 0);
 
             labelLayout.Children.Add(
                 new Label
                 {
                     Text = _calendarVM.Season,
                     VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Center,
                     HeightRequest = 20
-                }
-            );
+                }, 1, 0);
 
             // add right arrow
-		    labelLayout.Children.Add(
+		    var rightTapGestureRecognizer = new TapGestureRecognizer();
+		    rightTapGestureRecognizer.Tapped += (s, e) => {
+		        // handle the tap
+		    };
+
+            labelLayout.Children.Add(
 		        new Image
 		        {
-		            Source = "circle_right.png"
-		        });
+		            Source = "circle_right.png",
+		            VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.End,
+                    GestureRecognizers = { rightTapGestureRecognizer }
+		        }, 2, 0);
 
             headerLayout.Children.Add(labelLayout);
             layout.Children.Add(headerLayout);
