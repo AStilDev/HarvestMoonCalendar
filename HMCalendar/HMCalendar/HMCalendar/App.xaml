@@ -10,6 +10,16 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+
+		    <Style x:Key="CalendarFrame" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+		    <Style x:Key="CalendarLabel" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+		        <Setter Property="VerticalTextAlignment" Value="End" />
+		    </Style>
         </ResourceDictionary>
 	</Application.Resources>
 </Application>

@@ -11,7 +11,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:AboutPage />
+                <views:CalendarPage />
             </x:Arguments>
         </NavigationPage>
         
