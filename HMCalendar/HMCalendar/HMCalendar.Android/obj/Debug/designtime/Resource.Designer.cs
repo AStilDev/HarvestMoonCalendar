@@ -2090,12 +2090,6 @@ namespace HMCalendar.Droid
 		public partial class Drawable
 		{
 			
-			// aapt resource value: 0x7F010003
-			public const int 323-circle-right = 2130771971;
-			
-			// aapt resource value: 0x7F010004
-			public const int 325-circle-left = 2130771972;
-			
 			// aapt resource value: 0x7F090001
 			public const int abc_ab_share_pack_mtrl_alpha = 2131296257;
 			
@@ -2350,6 +2344,15 @@ namespace HMCalendar.Droid
 			
 			// aapt resource value: 0x7F090055
 			public const int avd_show_password = 2131296341;
+			
+			// aapt resource value: 0x7F010005
+			public const int circle-left = 2130771973;
+			
+			// aapt resource value: 0x7F010003
+			public const int circle-right = 2130771971;
+			
+			// aapt resource value: 0x7F010004
+			public const int circle_left = 2130771972;
 			
 			// aapt resource value: 0x7F090056
 			public const int design_bottom_navigation_item_background = 2131296342;

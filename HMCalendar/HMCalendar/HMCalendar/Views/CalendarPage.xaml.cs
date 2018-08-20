@@ -37,17 +37,27 @@ namespace HMCalendar.Views
             };
 
             // add left arrow
+            labelLayout.Children.Add(
+                new Image
+                {
+                    Source = "circle_left.png"
+                });
 
             labelLayout.Children.Add(
                 new Label
                 {
-                    Text = _calendarVM.Season, // todo
+                    Text = _calendarVM.Season,
                     VerticalOptions = LayoutOptions.Center,
                     HeightRequest = 20
                 }
             );
 
             // add right arrow
+		    labelLayout.Children.Add(
+		        new Image
+		        {
+		            Source = "circle_right.png"
+		        });
 
             headerLayout.Children.Add(labelLayout);
             layout.Children.Add(headerLayout);
