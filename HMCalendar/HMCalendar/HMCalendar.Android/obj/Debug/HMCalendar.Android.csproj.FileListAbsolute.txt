@@ -1,10 +1,10 @@
-C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\obj\Debug\HMCalendar.Android.csprojAssemblyReference.cache
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\bin\Debug\HMCalendar.Android.dll
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\bin\Debug\HMCalendar.Android.pdb
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\bin\Debug\com.companyname.HMCalendar.apk
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\bin\Debug\com.companyname.HMCalendar-Signed.apk
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\bin\Debug\HMCalendar.dll
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\bin\Debug\HMCalendar.pdb
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\obj\Debug\HMCalendar.Android.csprojAssemblyReference.cache
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\obj\Debug\HMCalendar.Android.csproj.CoreCompileInputs.cache
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\obj\Debug\HMCalendar.Android.csproj.CopyComplete
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.Android\obj\Debug\HMCalendar.Android.dll

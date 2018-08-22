@@ -7,20 +7,17 @@ namespace HMCalendar.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CalendarPage : ContentPage
-	{
+    {
 	    private const int MaxMonthDays = 30;
 	    private CalendarViewModel _calendarVM;
+
+        public Label SeasonLabel { get; set; }
 
 		public CalendarPage ()
 		{
 			InitializeComponent ();
 
-		    BindingContext = _calendarVM = new CalendarViewModel()
-		    {
-                
-		    };
-
-            var layout = new StackLayout();
+            /*var layout = new StackLayout();
 
 		    var headerLayout = new StackLayout
 		    {
@@ -41,46 +38,43 @@ namespace HMCalendar.Views
 
             // add left arrow
 		    var leftTapGestureRecognizer = new TapGestureRecognizer();
-		    leftTapGestureRecognizer.Tapped += (s, e) => {
-		        // handle the tap
-		    };
+		    leftTapGestureRecognizer.Tapped += (sender, e) => { _calendarVM.OnLeftClicked(); };
 
-            labelLayout.Children.Add(
-                new Image
+            var leftArrow = new Image
                 {
                     Source = "circle_left.png",
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Start,
                     GestureRecognizers = { leftTapGestureRecognizer }
-                }, 0, 0);
+                };
+            labelLayout.Children.Add(leftArrow, 0, 0);
 
-            labelLayout.Children.Add(
-                new Label
+            SeasonLabel = new Label
                 {
                     Text = _calendarVM.Season,
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
                     HeightRequest = 20
-                }, 1, 0);
+                };
+            labelLayout.Children.Add(SeasonLabel, 1, 0);
 
             // add right arrow
-		    var rightTapGestureRecognizer = new TapGestureRecognizer();
-		    rightTapGestureRecognizer.Tapped += (s, e) => {
-		        // handle the tap
-		    };
+            var rightTapGestureRecognizer = new TapGestureRecognizer();
+		    rightTapGestureRecognizer.Tapped += (s, e) => { _calendarVM.OnRightClicked(); };
 
-            labelLayout.Children.Add(
-		        new Image
+            var rightArrow = new Image
 		        {
 		            Source = "circle_right.png",
 		            VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.End,
                     GestureRecognizers = { rightTapGestureRecognizer }
-		        }, 2, 0);
+		        };
+		    labelLayout.Children.Add(rightArrow, 2, 0);
 
             headerLayout.Children.Add(labelLayout);
             layout.Children.Add(headerLayout);
 
+            // todo make this a CalendarControl (like bigbuttoncontrol)
             var grid = new Grid
             {
                 Padding = new Thickness(10),
@@ -125,9 +119,19 @@ namespace HMCalendar.Views
 		        col++;
 		    }
 
-            layout.Children.Add(grid);
+            layout.Children.Add(grid);*/
 
-		    Content = layout;
+		    // todo Content = layout;
 		}
+
+        public void OnLeftClicked(object sender, EventArgs args)
+        {
+            _calendarVM.OnLeftClicked();
+        }
+
+        public void OnRightClicked(object sender, EventArgs args)
+        {
+            _calendarVM.OnRightClicked();
+        }
     }
 }

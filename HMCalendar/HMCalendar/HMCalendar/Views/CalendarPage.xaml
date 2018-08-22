@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HMCalendar.Views.CalendarPage"
              xmlns:vm="clr-namespace:HMCalendar.ViewModels"
+             xmlns:controls="clr-namespace:HMCalendar.Controls;assembly=HMCalendar"
              Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:CalendarViewModel />
@@ -15,4 +16,35 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout x:Name="MainLayout">
+            <StackLayout x:Name="HeaderLayout" BackgroundColor="{Binding SeasonColor}" HorizontalOptions="Fill">
+                <Grid Padding="10" ColumnSpacing="8" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="circle_left.png" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnLeftClicked"
+                                NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Text="{Binding Season}" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Image Grid.Column="2" Source="circle_right.png" VerticalOptions="Center" HorizontalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnRightClicked"
+                                NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </StackLayout>
+            <controls:CalendarControl x:Name="Calendar" 
+                                           AutomationId="Calendar"
+                                           NumDays="{Binding NumberOfDays}"/>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
