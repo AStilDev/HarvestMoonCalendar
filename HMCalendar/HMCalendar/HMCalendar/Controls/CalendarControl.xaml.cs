@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace HMCalendar.Controls
             "NumDays",
             typeof(int),
             typeof(CalendarControl),
-            30,
+            29,
             BindingMode.TwoWay,
             propertyChanged: HandleNumDaysChanged);
 
@@ -44,7 +45,15 @@ namespace HMCalendar.Controls
 	        int row = 0;
 	        int col = 0;
 	        for (int i = 0; i < NumDays; i++)
-	        {
+            {
+                var frameTap = new TapGestureRecognizer();
+                frameTap.Tapped += (sender, e) =>
+                {
+                    Frame frameClicked = (Frame)sender;
+                    int day = int.Parse(((Label)frameClicked.Content).Text);
+                    HighlightDay(day, "ff1122");
+                };
+
 	            var frame = new Frame
 	            {
 	                Content = new Label
@@ -52,7 +61,8 @@ namespace HMCalendar.Controls
 	                    Text = "" + (i + 1),
 	                    Style = (Style)Application.Current.Resources["CalendarLabel"]
 	                },
-	                Style = (Style)Application.Current.Resources["CalendarFrame"]
+	                Style = (Style)Application.Current.Resources["CalendarFrame"],
+                    GestureRecognizers = { frameTap }
 	            };
 
 	            if (i != 0 && i % 7 == 0)
@@ -67,5 +77,9 @@ namespace HMCalendar.Controls
 	        }
         }
 
+        private void HighlightDay(int day, string hexColor)
+	    {
+	        CalendarGrid.Children[day - 1].BackgroundColor = Color.FromHex(hexColor);
+        }
     }
 }

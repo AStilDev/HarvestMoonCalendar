@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HMCalendar.Controls.CalendarControl">
     <ContentView.Content>
-        <StackLayout x:Name="CalendarStackLayout" HorizontalOptions="Center">
+        <StackLayout x:Name="CalendarStackLayout" HorizontalOptions="Center" Padding="5">
             <Grid x:Name="CalendarGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
