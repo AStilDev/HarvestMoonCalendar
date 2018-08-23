@@ -17,7 +17,7 @@ namespace HMCalendar.Controls
             "NumDays",
             typeof(int),
             typeof(CalendarControl),
-            29,
+            0,
             BindingMode.TwoWay,
             propertyChanged: HandleNumDaysChanged);
 
@@ -27,6 +27,9 @@ namespace HMCalendar.Controls
 
 	        set => SetValue(NumDaysProperty, value);
 	    }
+
+        // todo need list of colors? Need to pass in color somewhere
+        // dictionary of b-days with assoc. colors (pink gals, blue boys, everyone else yellow)
 
 		public CalendarControl ()
 		{
@@ -51,7 +54,7 @@ namespace HMCalendar.Controls
                 {
                     Frame frameClicked = (Frame)sender;
                     int day = int.Parse(((Label)frameClicked.Content).Text);
-                    HighlightDay(day, "ff1122");
+                    HighlightDay(day, "#ff1122");
                 };
 
 	            var frame = new Frame
