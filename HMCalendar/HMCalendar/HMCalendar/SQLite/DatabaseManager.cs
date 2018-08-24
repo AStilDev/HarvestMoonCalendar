@@ -9,7 +9,7 @@ namespace HMCalendar.SQLite
 {
     public class DatabaseManager
     {
-        SQLiteConnection dbConnection;
+        private readonly SQLiteConnection dbConnection;
         public DatabaseManager()
         {
             dbConnection = DependencyService.Get<IDBInterface>().CreateConnection();
@@ -17,7 +17,13 @@ namespace HMCalendar.SQLite
 
         public List<Character> GetAllCharacters()
         {
-            return dbConnection.Query<Character>("Select * From [Character]");
+            return dbConnection.Query<Character>("Select * From [Characters]");
+        }
+
+        public List<Character> GetCharactersByBirthday(string season)
+        {
+            return dbConnection.Query<Character>("Select * From [Characters]" +
+                                                 "Where birthday like '%" + season + "%'");
         }
     }
 }

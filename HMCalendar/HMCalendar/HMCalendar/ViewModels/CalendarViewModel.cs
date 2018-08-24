@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
-
+using HMCalendar.Models;
+using HMCalendar.SQLite;
+using SQLite.Net;
 using Xamarin.Forms;
 
 namespace HMCalendar.ViewModels
@@ -12,7 +14,9 @@ namespace HMCalendar.ViewModels
     {
         private string _season;
         private string _seasonColor;
+        private List<Character> _seasonCharacters;
         private int _index;
+        private readonly DatabaseManager _dbManager;
 
         // seasons
         public Dictionary<string, string> SeasonColors = new Dictionary<string, string>
@@ -37,6 +41,7 @@ namespace HMCalendar.ViewModels
             {
                 _season = value;
                 SeasonColor = SeasonColors[_season];
+                SeasonCharacters = _dbManager.GetCharactersByBirthday(Season);
                 OnPropertyChanged();
             }
         }
@@ -62,17 +67,38 @@ namespace HMCalendar.ViewModels
             }
         }
 
+        public List<Character> SeasonCharacters
+        {
+            get
+            {
+                if (_seasonCharacters == null)
+                {
+                    _seasonCharacters = _dbManager.GetCharactersByBirthday(Season);
+                }
+                return _seasonCharacters;
+            }
+
+            set
+            {
+                _seasonCharacters = value;
+                OnPropertyChanged();
+            }
+        }
+
         public int NumberOfDays
         {
-            get => 30;
+            get => 30; // todo different in AWL
         }
     
         public CalendarViewModel()
         {
             Title = "Friends of Mineral Town";
             _index = 0;
-        }
+            _dbManager = new DatabaseManager();
 
+            //_seasonCharacters = _dbManager.GetCharactersByBirthday(Season);
+        }
+        
         public void OnLeftClicked()
         {
             Season = PreviousSeason();

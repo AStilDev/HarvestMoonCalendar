@@ -10,14 +10,24 @@ namespace HMCalendar.Views
     {
 	    private CalendarViewModel _calendarVM;
 
-        public Label SeasonLabel { get; set; }
-
 		public CalendarPage ()
 		{
 			InitializeComponent ();
 
 		    BindingContext = _calendarVM = new CalendarViewModel();
-		}
+
+		    Calendar.Characters = _calendarVM.SeasonCharacters;
+
+            // calendar frame tapped
+		    Calendar.FrameTapped += (sender, controlTapped) =>
+		    {
+                // todo go to chara page
+		        var frameClicked = (Frame)sender;
+                var day = int.Parse(((Label)frameClicked.Content).Text);
+		        var frameChara = Calendar.Characters[day];
+		        // go to framChara page
+		    };
+        }
 
         public void OnLeftClicked(object sender, EventArgs args)
         {

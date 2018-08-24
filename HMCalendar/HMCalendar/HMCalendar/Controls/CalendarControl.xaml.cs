@@ -4,7 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-
+using HMCalendar.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +19,7 @@ namespace HMCalendar.Controls
             typeof(CalendarControl),
             0,
             BindingMode.TwoWay,
-            propertyChanged: HandleNumDaysChanged);
+            propertyChanged: HandleCalendarChanged);
 
 	    public int NumDays
 	    {
@@ -28,15 +28,29 @@ namespace HMCalendar.Controls
 	        set => SetValue(NumDaysProperty, value);
 	    }
 
-        // todo need list of colors? Need to pass in color somewhere
-        // dictionary of b-days with assoc. colors (pink gals, blue boys, everyone else yellow)
+	    public static readonly BindableProperty CharactersProperty = BindableProperty.Create(
+	        "Characters",
+	        typeof(List<Character>),
+	        typeof(CalendarControl),
+	        new List<Character>{new Character() {Birthday="0"}},
+	        BindingMode.TwoWay,
+	        propertyChanged: HandleCalendarChanged);
 
-		public CalendarControl ()
+	    public List<Character> Characters
+	    {
+	        get => (List<Character>)GetValue(CharactersProperty);
+
+	        set => SetValue(CharactersProperty, value);
+	    }
+
+        public EventHandler<Frame> FrameTapped;
+
+        public CalendarControl ()
 		{
 			InitializeComponent ();
 		}
 
-	    private static void HandleNumDaysChanged(BindableObject bindable, object oldValue, object newValue)
+	    private static void HandleCalendarChanged(BindableObject bindable, object oldValue, object newValue)
 	    {
 	        var control = bindable as CalendarControl;
 
@@ -52,18 +66,30 @@ namespace HMCalendar.Controls
                 var frameTap = new TapGestureRecognizer();
                 frameTap.Tapped += (sender, e) =>
                 {
-                    Frame frameClicked = (Frame)sender;
+                    /*Frame frameClicked = (Frame)sender;
                     int day = int.Parse(((Label)frameClicked.Content).Text);
-                    HighlightDay(day, "#ff1122");
+                    HighlightDay(day, "#ff1122");*/
+                    FrameTapped?.Invoke(this, (Frame)sender);
                 };
+
+                // todo need list of colors? Need to pass in color somewhere
+                // dictionary of b-days with assoc. colors (pink gals, blue boys, everyone else yellow)
+                var bdayCharas = Characters.Where(c => c.Birthday.EndsWith(" " + (i+1)));
+                var bgColor = Color.White;
+
+                if (bdayCharas.Any())
+                {
+                    bgColor = Color.FromHex("#ff1122");
+                }
 
 	            var frame = new Frame
 	            {
 	                Content = new Label
 	                {
 	                    Text = "" + (i + 1),
-	                    Style = (Style)Application.Current.Resources["CalendarLabel"]
-	                },
+	                    Style = (Style)Application.Current.Resources["CalendarLabel"],
+                        BackgroundColor = bgColor
+                    },
 	                Style = (Style)Application.Current.Resources["CalendarFrame"],
                     GestureRecognizers = { frameTap }
 	            };

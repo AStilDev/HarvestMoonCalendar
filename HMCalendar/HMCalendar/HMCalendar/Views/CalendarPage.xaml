@@ -44,7 +44,8 @@
             </StackLayout>
             <controls:CalendarControl x:Name="Calendar" 
                                            AutomationId="Calendar"
-                                           NumDays="{Binding NumberOfDays}"/>
+                                           NumDays="{Binding NumberOfDays}"
+                                           Characters="{Binding SeasonCharacters}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -13,7 +13,6 @@ namespace HMCalendar
 		{
 			InitializeComponent();
 
-
 			MainPage = new MainPage();
 		}
 
