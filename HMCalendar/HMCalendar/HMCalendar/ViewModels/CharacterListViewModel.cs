@@ -16,7 +16,7 @@ namespace HMCalendar.ViewModels
 
         public CharacterListViewModel()
         {
-            Title = "Friends of Mineral Town"; // todo
+            Title = "Friends of Mineral Town"; // todo user prefs
 
             _dbManager = new DatabaseManager();
 

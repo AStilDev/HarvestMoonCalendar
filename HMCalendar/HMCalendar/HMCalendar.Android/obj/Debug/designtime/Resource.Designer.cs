@@ -2371,6 +2371,9 @@ namespace HMCalendar.Droid
 			// aapt resource value: 0x7F09005B
 			public const int design_snackbar_background = 2131296347;
 			
+			// aapt resource value: 0x7F010005
+			public const int heart = 2130771973;
+			
 			// aapt resource value: 0x7F090054
 			public const int ic_audiotrack_dark = 2131296340;
 			
@@ -2902,8 +2905,8 @@ namespace HMCalendar.Droid
 			// aapt resource value: 0x7F090104
 			public const int ic_vol_type_tv_light = 2131296516;
 			
-			// aapt resource value: 0x7F010005
-			public const int leaf = 2130771973;
+			// aapt resource value: 0x7F010006
+			public const int leaf = 2130771974;
 			
 			// aapt resource value: 0x7F090105
 			public const int mr_button_connected_dark = 2131296517;

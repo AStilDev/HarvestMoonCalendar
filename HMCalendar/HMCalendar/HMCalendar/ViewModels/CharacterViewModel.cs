@@ -20,6 +20,11 @@ namespace HMCalendar.ViewModels
             get => _selectedCharacter.Birthday;
         }
 
+        public bool HasFavorites
+        {
+            get => !string.IsNullOrEmpty(FavoritedList);
+        }
+
         public string FavoritedList
         {
             get => _selectedCharacter.Favorited;
@@ -39,6 +44,8 @@ namespace HMCalendar.ViewModels
         {
             get => _selectedCharacter.Disliked;
         }
+
+        public List<string> ItemStatusList;
 
         public CharacterViewModel(Character chara)
         {

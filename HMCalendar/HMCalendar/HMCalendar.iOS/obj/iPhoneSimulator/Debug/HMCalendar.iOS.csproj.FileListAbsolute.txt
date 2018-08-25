@@ -74,3 +74,6 @@ C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\bin\iPhoneSi
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\leaf.png
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\leaf@2x.png
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\leaf@3x.png
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\heart.png
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\heart@2x.png
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\heart@3x.png

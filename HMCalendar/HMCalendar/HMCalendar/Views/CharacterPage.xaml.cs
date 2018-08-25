@@ -20,6 +20,17 @@ namespace HMCalendar.Views
 			InitializeComponent ();
 
 		    BindingContext = _charaVM = vm;
+
+		    if (!string.IsNullOrEmpty(vm.FavoritedList))
+		    {
+                // add favorites
+		        var favBtn = new Button()
+		        {
+
+		        };
+
+		        MainLayout.Children.Add(favBtn);
+		    }
 		}
 
 	    public void OnExitClicked(object sender, EventArgs args)
