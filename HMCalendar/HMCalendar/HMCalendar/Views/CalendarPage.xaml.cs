@@ -28,7 +28,7 @@ namespace HMCalendar.Views
 		        var frameCharas = Calendar.Characters.Where(c => c.Birthday.EndsWith(" " + day));
 
                 var charaVM = new CharacterViewModel(frameCharas.First());
-		        Navigation.PushModalAsync(new CharacterPage(charaVM)); // todo needs an X button
+		        Navigation.PushAsync(new CharacterPage(charaVM));
 		    };
         }
 

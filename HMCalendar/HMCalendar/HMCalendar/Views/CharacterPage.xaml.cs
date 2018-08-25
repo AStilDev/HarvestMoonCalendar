@@ -20,22 +20,27 @@ namespace HMCalendar.Views
 			InitializeComponent ();
 
 		    BindingContext = _charaVM = vm;
-
-		    if (!string.IsNullOrEmpty(vm.FavoritedList))
-		    {
-                // add favorites
-		        var favBtn = new Button()
-		        {
-
-		        };
-
-		        MainLayout.Children.Add(favBtn);
-		    }
 		}
 
-	    public void OnExitClicked(object sender, EventArgs args)
+	    public void OnFavoritesClicked(object send, TappedEventArgs args)
 	    {
-	        Navigation.PopModalAsync();
+	        var vm = new ItemsViewModel("Favorites", _charaVM.FavoritedList);
+	        Navigation.PushAsync(new ItemsPage(vm));
 	    }
+	    public void OnLovesClicked(object send, TappedEventArgs args)
+	    {
+	        var vm = new ItemsViewModel("Loves", _charaVM.LovedList);
+	        Navigation.PushAsync(new ItemsPage(vm));
+        }
+	    public void OnLikesClicked(object send, TappedEventArgs args)
+	    {
+	        var vm = new ItemsViewModel("Likes", _charaVM.LikedList);
+	        Navigation.PushAsync(new ItemsPage(vm));
+        }
+	    public void OnDislikesClicked(object send, TappedEventArgs args)
+	    {
+	        var vm = new ItemsViewModel("Dislikes", _charaVM.DislikedList);
+	        Navigation.PushAsync(new ItemsPage(vm));
+        }
     }
 }

@@ -3,20 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:HMCalendar.ViewModels;assembly=HMCalendar"
              x:Class="HMCalendar.Views.CharacterPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Order="Primary" Priority="0" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout >
             <StackLayout x:Name="MainLayout"
                 Padding="10">
-                <Label Text="X" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Tapped="OnExitClicked"
-                            NumberOfTapsRequired="1" />
-                    </Label.GestureRecognizers>
-                </Label>
                 <StackLayout Padding="50"/>
                 <Label Text="{Binding Name}"/>
                 <Label Text="{Binding Birthday}"/>
@@ -39,6 +29,11 @@
                         <Label Grid.Column="1" Text=">" FontAttributes="Bold" FontSize="25"
                                VerticalTextAlignment="Center"/>
                     </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnFavoritesClicked"
+                            NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
                 </Frame>
                 <Frame x:Name="LovedFrame" 
                        Padding="10"
@@ -55,6 +50,11 @@
                         <Label Grid.Column="1" Text=">" FontAttributes="Bold" FontSize="25"
                                VerticalTextAlignment="Center"/>
                     </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnLovesClicked"
+                            NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
                 </Frame>
                 <Frame x:Name="LikesFrame" 
                        Padding="10"
@@ -71,6 +71,11 @@
                         <Label Grid.Column="1" Text=">" FontAttributes="Bold" FontSize="25"
                                VerticalTextAlignment="Center"/>
                     </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnLikesClicked"
+                            NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
                 </Frame>
                 <Frame x:Name="DislikesFrame" 
                        Padding="10"
@@ -87,12 +92,12 @@
                         <Label Grid.Column="1" Text=">" FontAttributes="Bold" FontSize="25"
                                VerticalTextAlignment="Center"/>
                     </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnDislikesClicked"
+                            NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
                 </Frame>
-
-                <!--<Label Text ="{Binding FavoritedList}"/> visibility
-                <Label Text ="{Binding LovedList}"/>
-                <Label Text ="{Binding LikedList}"/>
-                <Label Text="{Binding DislikedList}"/>-->
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

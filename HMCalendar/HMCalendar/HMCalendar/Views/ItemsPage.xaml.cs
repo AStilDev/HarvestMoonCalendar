@@ -18,28 +18,20 @@ namespace HMCalendar.Views
 	{
         private readonly ItemsViewModel _viewModel;
 
-        public ItemsPage()
+        public ItemsPage(ItemsViewModel vm)
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = vm;
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var item = args.SelectedItem as Item;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-            // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            // todo toggle heart
         }
 
         protected override void OnAppearing()
