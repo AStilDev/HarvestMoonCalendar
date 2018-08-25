@@ -28,7 +28,7 @@ namespace HMCalendar.Views
 	        if (chara == null)
 	            return;
 
-            Navigation.PushModalAsync(new CharacterPage(new CharacterViewModel(chara)));
+            Navigation.PushAsync(new CharacterPage(new CharacterViewModel(chara)));
 	    }
     }
 }
