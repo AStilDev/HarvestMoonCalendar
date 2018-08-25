@@ -24,11 +24,15 @@ namespace HMCalendar.Views
 		    {
                 // go to character page
 		        var frameClicked = (Frame)controlTapped;
+
                 var day = int.Parse(((Label)frameClicked.Content).Text);
 		        var frameCharas = Calendar.Characters.Where(c => c.Birthday.EndsWith(" " + day));
 
-                var charaVM = new CharacterViewModel(frameCharas.First());
-		        Navigation.PushAsync(new CharacterPage(charaVM));
+		        if (frameCharas.Any())
+		        {
+		            var charaVM = new CharacterViewModel(frameCharas.First());
+		            Navigation.PushAsync(new CharacterPage(charaVM));
+                }
 		    };
         }
 
