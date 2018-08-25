@@ -163,4 +163,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\circle_left%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\leaf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\leaf%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\leaf%403x.png" />
+  </ItemGroup>
 </Project>

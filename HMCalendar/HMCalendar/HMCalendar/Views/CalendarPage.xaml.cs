@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using HMCalendar.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,11 +22,13 @@ namespace HMCalendar.Views
             // calendar frame tapped
 		    Calendar.FrameTapped += (sender, controlTapped) =>
 		    {
-                // todo go to chara page
-		        var frameClicked = (Frame)sender;
+                // go to character page
+		        var frameClicked = (Frame)controlTapped;
                 var day = int.Parse(((Label)frameClicked.Content).Text);
-		        var frameChara = Calendar.Characters[day];
-		        // go to framChara page
+		        var frameCharas = Calendar.Characters.Where(c => c.Birthday.EndsWith(" " + day));
+
+                var charaVM = new CharacterViewModel(frameCharas.First());
+		        Navigation.PushModalAsync(new CharacterPage(charaVM)); // todo needs an X button
 		    };
         }
 

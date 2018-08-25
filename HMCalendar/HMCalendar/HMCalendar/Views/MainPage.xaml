@@ -22,7 +22,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:CharacterListPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

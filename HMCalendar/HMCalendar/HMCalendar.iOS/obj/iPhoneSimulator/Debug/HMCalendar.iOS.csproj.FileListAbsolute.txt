@@ -71,3 +71,6 @@ C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSi
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\HMCalendar.iOS.pdb
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\bin\iPhoneSimulator\Debug\SQLite.Net.Platform.XamarinIOS.Unified.dll
 C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\bin\iPhoneSimulator\Debug\SQLite.Net.dll
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\leaf.png
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\leaf@2x.png
+C:\Xamarin\HarvestMoonCalendar\HMCalendar\HMCalendar\HMCalendar.iOS\obj\iPhoneSimulator\Debug\optimized\leaf@3x.png

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:HMCalendar.ViewModels;assembly=HMCalendar"
+             x:Class="HMCalendar.Views.CharacterPage">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            Padding="20">
+            <Label Text="X" Margin="10">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnExitClicked"
+                        NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding Name}"/>
+            <Label Text="{Binding Birthday}"/>
+
+            <!--<Label Text ="{Binding FavoritedList}"/>
+            <Label Text ="{Binding LovedList}"/>
+            <Label Text ="{Binding LikedList}"/>
+            <Label Text="{Binding DislikedList}"/>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
