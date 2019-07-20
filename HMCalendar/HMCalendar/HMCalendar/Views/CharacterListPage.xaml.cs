@@ -30,5 +30,10 @@ namespace HMCalendar.Views
 
             Navigation.PushAsync(new CharacterPage(new CharacterViewModel(chara)));
 	    }
+
+        public void OnOptionsClicked(object sender, EventArgs args)
+        {
+
+        }
     }
 }

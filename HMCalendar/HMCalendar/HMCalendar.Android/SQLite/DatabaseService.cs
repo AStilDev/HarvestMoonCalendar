@@ -3,17 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using HMCalendar.Droid.SQLite;
 using HMCalendar.SQLite;
-using SQLite.Net;
-using SQLite.Net.Platform.XamarinAndroid;
+using SQLite;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(DatabaseService))]
@@ -48,8 +40,7 @@ namespace HMCalendar.Droid.SQLite
                 }
             }
 
-            var androidPlatform = new SQLitePlatformAndroid();
-            var conn = new SQLiteConnection(androidPlatform, path);
+            var conn = new SQLiteConnection(path);
 
             return conn;
         }

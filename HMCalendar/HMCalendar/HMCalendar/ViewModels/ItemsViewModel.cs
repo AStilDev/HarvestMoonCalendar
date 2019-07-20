@@ -17,8 +17,20 @@ namespace HMCalendar.ViewModels
     {
         private string _itemListType;
         private List<string> _items;
+        //private Item _currentItem;
 
-        public ObservableCollection<string> Items { get; set; }
+        public ObservableCollection<Item> Items { get; set; }
+
+        //public Item CurrentItem
+        //{
+        //    get => _currentItem;
+        //    set
+        //    {
+        //        _currentItem = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel(string itemListType, string favlist)
@@ -26,7 +38,8 @@ namespace HMCalendar.ViewModels
             Title = itemListType;
             _itemListType = itemListType;
             _items = favlist.Split(',').ToList();
-            Items = new ObservableCollection<string>();
+            Items = new ObservableCollection<Item>();
+
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             /*MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
@@ -52,7 +65,10 @@ namespace HMCalendar.ViewModels
 
                 foreach (var item in _items)
                 {
-                    Items.Add(item);
+                    Items.Add(new Item
+                    {
+                        Text = item
+                    });
                 }
             }
             catch (Exception ex)
@@ -63,6 +79,13 @@ namespace HMCalendar.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        public void FavoriteSelectedItem(Item item)
+        {
+            // todo add to favorites list and store
+            //CurrentItem.Favorited = !CurrentItem.Favorited;
+            //OnPropertyChanged(nameof(CurrentItem));
         }
     }
 }

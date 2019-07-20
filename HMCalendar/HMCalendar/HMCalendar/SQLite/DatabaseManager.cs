@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HMCalendar.Models;
-using SQLite.Net;
+using SQLite;
 using Xamarin.Forms;
 
 namespace HMCalendar.SQLite

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Input;
 using HMCalendar.Models;
 using HMCalendar.SQLite;
-using SQLite.Net;
 using Xamarin.Forms;
 
 namespace HMCalendar.ViewModels
@@ -92,7 +91,7 @@ namespace HMCalendar.ViewModels
     
         public CalendarViewModel()
         {
-            Title = "Friends of Mineral Town";
+            Title = "Friends of Mineral Town"; // todo get from preferences
             _index = 0;
             _dbManager = new DatabaseManager();
 

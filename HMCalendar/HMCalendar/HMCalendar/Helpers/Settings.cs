@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Plugin.Settings;
-using Plugin.Settings.Abstractions;
 
 namespace HMCalendar.Helpers
 {
@@ -13,7 +11,7 @@ namespace HMCalendar.Helpers
     /// </summary>
     public static class Settings
     {
-        private static ISettings AppSettings => CrossSettings.Current;
+       // private static ISettings AppSettings => CrossSettings.Current;
 
         #region Setting Constants
 
@@ -23,10 +21,10 @@ namespace HMCalendar.Helpers
         #endregion
 
 
-        public static string GeneralSettings
-        {
-            get => AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);
-            set => AppSettings.AddOrUpdateValue(SettingsKey, value);
-        }
+        //public static string GeneralSettings
+        //{
+        //    get => AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);
+        //    set => AppSettings.AddOrUpdateValue(SettingsKey, value);
+        //}
     }
 }

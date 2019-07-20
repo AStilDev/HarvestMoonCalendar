@@ -45,5 +45,10 @@ namespace HMCalendar.Views
         {
             _calendarVM.OnRightClicked();
         }
+
+        public void OnOptionsClicked(object sender, EventArgs args)
+        {
+
+        }
     }
 }

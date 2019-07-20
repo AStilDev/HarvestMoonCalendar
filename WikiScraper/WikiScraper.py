@@ -5,11 +5,12 @@ import sqlite3
 from sqlite3 import Error
 
 def main():
-    db_file = 'C:\\Users\Alisha\Desktop\Programming Projects\WebScraper\WikiScraper\harvestmoondb.db'
-    baseurl = 'http://harvestmoon.wikia.com'
-    url = 'http://harvestmoon.wikia.com/wiki/Category:Harvest_Moon:_Friends_of_Mineral_Town_Characters'
-    game_id = 1
-    id = 1
+    db_file = 'C:\\Xamarin\HarvestMoonCalendar\harvestmoondb.db' 
+    # 'C:\\Users\Alisha\Desktop\Programming Projects\WebScraper\WikiScraper\harvestmoondb.db'
+    baseurl = 'https://harvestmoon.fandom.com/'
+    url = 'https://harvestmoon.fandom.com/wiki/Category:Harvest_Moon_DS_Characters'
+    game_id = 2
+    id = 34
     likes_dict = {
         "favorited" : "",
         "loved" : "",
@@ -109,7 +110,7 @@ def get_chara_urls(baseurl, url):
     soup = BeautifulSoup(content,'html.parser') # choose html parser
 
     # get all the links
-    links = soup.findAll('a', text = re.compile(".*\(FoMT\)")) #title CONTAINS (LoH)
+    links = soup.findAll('a', text = re.compile(".*\(DS\)")) #title CONTAINS (LoH)
     # store them
     chara_urls = [] 
     for link in links:
