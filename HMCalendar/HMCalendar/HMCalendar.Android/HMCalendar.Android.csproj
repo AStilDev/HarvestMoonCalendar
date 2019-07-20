@@ -54,6 +54,9 @@
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>4.1.0-beta</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.3.0-pre</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.608146-pre1" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
@@ -68,7 +71,7 @@
     <Compile Include="SQLite\DatabaseService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\harvestmoondb.db" />
+    <EmbeddedResource Include="Assets\harvestmoondb.db" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

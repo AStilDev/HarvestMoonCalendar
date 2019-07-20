@@ -18,11 +18,15 @@ namespace HMCalendar.Views
 		public CharacterListPage ()
 		{
 			InitializeComponent ();
-
-		    BindingContext = _viewModel = new CharacterListViewModel();
         }
 
-	    public void OnCharacterSelected(object sender, SelectedItemChangedEventArgs args)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            BindingContext = _viewModel = new CharacterListViewModel(); // reset
+        }
+
+        public void OnCharacterSelected(object sender, SelectedItemChangedEventArgs args)
 	    {
 	        var chara = args.SelectedItem as Character;
 	        if (chara == null)
@@ -31,9 +35,10 @@ namespace HMCalendar.Views
             Navigation.PushAsync(new CharacterPage(new CharacterViewModel(chara)));
 	    }
 
-        public void OnOptionsClicked(object sender, EventArgs args)
+        public async void OnOptionsClicked(object sender, EventArgs args)
         {
-
+            // open game change selection
+            await Navigation.PushModalAsync(new GameSelectionPage());
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Input;
 using HMCalendar.Models;
 using HMCalendar.SQLite;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HMCalendar.ViewModels
@@ -15,6 +16,7 @@ namespace HMCalendar.ViewModels
         private string _seasonColor;
         private List<Character> _seasonCharacters;
         private int _index;
+        private int _gameId;
         private readonly DatabaseManager _dbManager;
 
         // seasons
@@ -40,7 +42,7 @@ namespace HMCalendar.ViewModels
             {
                 _season = value;
                 SeasonColor = SeasonColors[_season];
-                SeasonCharacters = _dbManager.GetCharactersByBirthday(Season);
+                SeasonCharacters = _dbManager.GetCharactersByBirthday(Season, _gameId);
                 OnPropertyChanged();
             }
         }
@@ -72,7 +74,7 @@ namespace HMCalendar.ViewModels
             {
                 if (_seasonCharacters == null)
                 {
-                    _seasonCharacters = _dbManager.GetCharactersByBirthday(Season);
+                    _seasonCharacters = _dbManager.GetCharactersByBirthday(Season, _gameId);
                 }
                 return _seasonCharacters;
             }
@@ -91,9 +93,15 @@ namespace HMCalendar.ViewModels
     
         public CalendarViewModel()
         {
-            Title = "Friends of Mineral Town"; // todo get from preferences
+            string gameName = Preferences.Get("Selected_Game", "Harvest Moon: Friends of Mineral Town");
+
+            Title = gameName;
             _index = 0;
             _dbManager = new DatabaseManager();
+
+            // pull gameid from prefs
+            var game = _dbManager.GetGameByName(gameName);
+            _gameId = game.GameId;
 
             //_seasonCharacters = _dbManager.GetCharactersByBirthday(Season);
         }

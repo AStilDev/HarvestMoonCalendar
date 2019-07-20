@@ -20,6 +20,7 @@ namespace HMCalendar.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Essentials.Platform.Init(this, bundle); // add this line to your code, it may also be called: bundle
             LoadApplication(new App());
         }
     }

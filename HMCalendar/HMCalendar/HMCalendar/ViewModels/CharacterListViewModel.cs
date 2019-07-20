@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using HMCalendar.Models;
 using HMCalendar.SQLite;
+using Xamarin.Essentials;
 
 namespace HMCalendar.ViewModels
 {
@@ -12,26 +13,32 @@ namespace HMCalendar.ViewModels
     {
         private DatabaseManager _dbManager;
 
-        public ObservableCollection<Character> Items { get; set; }
+        public ObservableCollection<Character> Characters { get; set; }
 
         public CharacterListViewModel()
         {
-            Title = "Friends of Mineral Town"; // todo user prefs
+            // get name of game from prefs
+            var gameName = Preferences.Get("Selected_Game", "Harvest Moon: Friends of Mineral Town");
+
+            Title = gameName;
 
             _dbManager = new DatabaseManager();
 
-            Items = new ObservableCollection<Character>();
+            Characters = new ObservableCollection<Character>();
 
-            LoadItems();
+            LoadCharacters(gameName);
         }
 
-        private void LoadItems()
+        private void LoadCharacters(string gameName)
         {
-            List<Character> allCharas = _dbManager.GetAllCharacters().ToList();
+            // pull gameid from prefs
+            Game game = _dbManager.GetGameByName(gameName);
+
+            List<Character> allCharas = _dbManager.GetAllCharacters(game.GameId).ToList();
 
             foreach (Character chara in allCharas)
             {
-                Items.Add(chara);
+                Characters.Add(chara);
             }
         }
     }
