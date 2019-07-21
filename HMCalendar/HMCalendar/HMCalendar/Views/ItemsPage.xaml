@@ -12,25 +12,39 @@
             <ListView x:Name="ItemsListView" 
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
-                RefreshCommand="{Binding LoadItemsCommand}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
                 ItemSelected="OnItemSelected"
-                SelectedItem="{Binding CurrentItem, Mode=TwoWay}">
+                SelectedItem="{Binding CurrentItem, Mode=TwoWay}"
+                HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0"
+                                    Text="{Binding Text}" 
+                                       Margin="10"/>
+                                <Image Grid.Column="2"
+                                    Source="heart.png" 
+                                       IsVisible="{Binding Favorited}"
+                                       Margin="10"/>
+                            </Grid>
+
+                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                     <Label Text="{Binding Text}" 
                                            Margin="10"/>
                                     <StackLayout HorizontalOptions="StartAndExpand"/>
                                     <Image Source="heart.png" 
                                            IsVisible="{Binding Favorited}"
                                            Margin="10"/>
-                                </StackLayout>
-                            </StackLayout>
+                                </StackLayout>-->
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

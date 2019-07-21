@@ -27,7 +27,6 @@ namespace HMCalendar.ViewModels
 
             Title = gameName;
 
-
             _dbManager = new DatabaseManager();
 
             LoadGame(gameName);
