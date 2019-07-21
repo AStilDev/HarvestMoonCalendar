@@ -22,11 +22,13 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal" Padding="20">
-                                    <Label Text="{Binding Text}" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Text}" 
+                                           Margin="10"/>
                                     <StackLayout HorizontalOptions="StartAndExpand"/>
                                     <Image Source="heart.png" 
-                                           IsVisible="{Binding Favorited}"/>
+                                           IsVisible="{Binding Favorited}"
+                                           Margin="10"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

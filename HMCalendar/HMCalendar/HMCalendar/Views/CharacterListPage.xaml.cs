@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,16 +15,29 @@ namespace HMCalendar.Views
 	public partial class CharacterListPage : ContentPage
 	{
 	    private CharacterListViewModel _viewModel;
+        private List<Character> _inputCharacters;
 
 		public CharacterListPage ()
 		{
 			InitializeComponent ();
+            BindingContext = _viewModel = new CharacterListViewModel();
+            MessagingCenter.Subscribe<GameSelectionPage>(this, "GameSelected", SourceCallback);
         }
 
-        protected override void OnAppearing()
+        public CharacterListPage(List<Character> inputCharacters)
         {
-            base.OnAppearing();
-            BindingContext = _viewModel = new CharacterListViewModel(); // reset
+            InitializeComponent();
+            BindingContext = _viewModel = new CharacterListViewModel
+            {
+                Characters = new ObservableCollection<Character>(inputCharacters)
+            };
+
+            MessagingCenter.Subscribe<GameSelectionPage>(this, "GameSelected", SourceCallback);
+        }
+
+        private void SourceCallback(GameSelectionPage obj)
+        {
+            BindingContext = _viewModel = new CharacterListViewModel();
         }
 
         public void OnCharacterSelected(object sender, SelectedItemChangedEventArgs args)

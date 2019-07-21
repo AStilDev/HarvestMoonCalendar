@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HMCalendar.Views.SearchPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Game Selection" Order="Secondary" Priority="0" Clicked="OnOptionsClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Get Character by Item Search" Margin="20" FontSize="16" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" Spacing="8">
+                <Label Text="Get all characters where " Margin="10,0,0,0"/>
+                <Picker Title="Make a Selection" ItemsSource="{Binding Columns}" SelectedItem="{Binding Column}"/>
+                <Label Text=" is like "/>
+            </StackLayout>
+            <Entry Text="{Binding Keyword}" MaxLength="20" Margin="10"/>
+            <Button Text="Search" Clicked="OnSearchClicked" Margin="10"/>
+            <Label x:Name="NoResultsLabel" Text="No results found" HorizontalOptions="Center" FontSize="16" 
+                   Margin="20" IsVisible="False"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

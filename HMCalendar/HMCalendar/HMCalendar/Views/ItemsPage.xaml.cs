@@ -46,7 +46,7 @@ namespace HMCalendar.Views
 
         public void OnOptionsClicked(object sender, EventArgs args)
         {
-            // todo Hearted Items filter
+            _viewModel.HeartedFilterOn = !_viewModel.HeartedFilterOn;
         }
     }
 }

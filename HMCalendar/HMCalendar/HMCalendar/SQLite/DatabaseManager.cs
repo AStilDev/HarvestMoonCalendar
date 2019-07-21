@@ -40,5 +40,12 @@ namespace HMCalendar.SQLite
                                                  "Where birthday like '%" + season + "%'" +
                                                  "and gameId like '%" + gameId + "%'");
         }
+
+        public List<Character> GetCharactersByKeyword(int gameId, string column, string keyword)
+        {
+            return dbConnection.Query<Character>("Select * From [Characters]" +
+                                                 "Where " + column + " like '%" + keyword + "%'" +
+                                                 "and gameId like '%" + gameId + "%'");
+        }
     }
 }
