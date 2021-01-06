@@ -5,11 +5,12 @@ import sqlite3
 from sqlite3 import Error
 
 def main():
-    db_file = 'C:\\Users\Alisha\Desktop\Programming Projects\WebScraper\WikiScraper\harvestmoondb.db'
+    db_file = 'C:\\Users\Alisha\Desktop\Programming_Projects\HarvestMoonCalendar\harvestmoondb.db' #'C:\\Users\Alisha\Desktop\Programming Projects\WebScraper\WikiScraper\harvestmoondb.db'
     baseurl = 'http://harvestmoon.wikia.com'
-    url = 'http://harvestmoon.wikia.com/wiki/Category:Harvest_Moon:_Friends_of_Mineral_Town_Characters'
-    game_id = 1
-    id = 1
+    url = 'http://harvestmoon.wikia.com/wiki/Category:Story_of_Seasons:_Friends_of_Mineral_Town_Characters'
+    game_id = 2
+    id = 34
+    birthday = ""
     likes_dict = {
         "favorited" : "",
         "loved" : "",
@@ -18,6 +19,7 @@ def main():
         "disliked" : "",
         "hated" : ""
     }
+    matches = ["Special", "Loved", "Liked", "Hated", "Neutral", "Disliked", "\""]
 
     # connect to db
     db = create_connection(db_file)
@@ -42,7 +44,7 @@ def main():
 
             # table of likes
             data = []
-            table = soup.find('table', attrs={'class':'wikitable'})
+            table = soup.find('table', attrs={'class':'article-table'})
 
             if table is not None:
                 rows = table.find_all('tr')
@@ -62,27 +64,51 @@ def main():
                 if data is not None:
                     count = 0
                     flag = 'false'
+                    #if "Vivant" in chara_name:
+                    #   likes_dict["favorited"] = ""
+                    #  likes_dict["loved"] = ""
+                    # likes_dict["liked"] = ""
+                    #likes_dict["hated"] = ""
+                    #continue
                     for row in data:
                         if len(row) is not 0:
-                            if count is not 0:
-                                if len(data) is 8 and flag is 'false': # includes favorited items
-                                    if count is 1:
-                                        likes_dict["favorited"] = row[1]
-                                        count -= 1
-                                        flag = 'true'
-                                elif count is 1:
+                            if not any(x in row[0] for x in matches):
+                                if count is not 0:
+                                    row[0] = row[0].replace("・", ", ")
+                                    if len(data) is 12: #and flag is 'false': # includes favorited items (8)
+                                        if count is 1:
+                                            likes_dict["favorited"] = row[0]
+                                            count -= 1
+                                            flag = 'true'
+                                        elif count is 2:
+                                           likes_dict["loved"] = row[0]
+                                        elif count is 4:
+                                            likes_dict['liked'] = row[0]
+                                        elif count is 10:
+                                            likes_dict['hated'] = row[0]
+                                    else:
+                                        likes_dict["favorited"] = ""
+                                        if count is 1:
+                                            likes_dict["loved"] = row[0]
+                                        elif count is 3:
+                                            likes_dict['liked'] = row[0]
+                                        elif count is 9:
+                                            likes_dict['hated'] = row[0]
+                            elif "\"" not in row[1]:
+                                row[1] = row[1].replace("・", ", ")
+                                likes_dict["favorited"] = ""
+                                if count is 0:
                                     likes_dict["loved"] = row[1]
-                                elif count is 2:
+                                elif count is 1:
                                     likes_dict['liked'] = row[1]
-                                elif count is 5:
+                                elif count is 4:
                                     likes_dict['hated'] = row[1]
-                                print(row)
                             count += 1
                         else:
                             likes_dict["favorited"] = ""
                             likes_dict["loved"] = ""
                             likes_dict["liked"] = ""
-                            likes_dict["disliked"] = ""
+                            likes_dict["hated"] = ""
 
                 if chara_name is not None and birthday is not None and data is not None:
                     cursor.execute('''INSERT INTO characters(gameid, name, birthday, characterid, favorited, loved, liked, disliked)
@@ -109,7 +135,7 @@ def get_chara_urls(baseurl, url):
     soup = BeautifulSoup(content,'html.parser') # choose html parser
 
     # get all the links
-    links = soup.findAll('a', text = re.compile(".*\(FoMT\)")) #title CONTAINS (LoH)
+    links = soup.findAll('a', text = re.compile(".*\(SoSFoMT\)")) #title CONTAINS (LoH)
     # store them
     chara_urls = [] 
     for link in links:
