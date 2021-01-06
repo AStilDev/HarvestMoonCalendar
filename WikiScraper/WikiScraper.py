@@ -8,8 +8,8 @@ def main():
     db_file = 'C:\\Users\Alisha\Desktop\Programming_Projects\HarvestMoonCalendar\harvestmoondb.db' #'C:\\Users\Alisha\Desktop\Programming Projects\WebScraper\WikiScraper\harvestmoondb.db'
     baseurl = 'http://harvestmoon.wikia.com'
     url = 'http://harvestmoon.wikia.com/wiki/Category:Story_of_Seasons:_Friends_of_Mineral_Town_Characters'
-    game_id = 2
-    id = 34
+    game_id = 3
+    id = 81
     birthday = ""
     likes_dict = {
         "favorited" : "",
