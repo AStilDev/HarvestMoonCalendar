@@ -5,3 +5,5 @@ A Xamarin cross-platform application to serve as an easy-to-use guide for the Ha
 Games currently supported:
 - Friends of Mineral Town
 - More Friends of Mineral Town
+- DS
+- DS Cute

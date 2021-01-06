@@ -31,7 +31,9 @@ namespace HMCalendar.Views
             if (item == null)
                 return;
 
-            // todo toggle heart
+            // toggle heart
+            item.Favorited = !item.Favorited;
+            _viewModel.FavoriteSelectedItem(item);
         }
 
         protected override void OnAppearing()
@@ -40,6 +42,11 @@ namespace HMCalendar.Views
 
             if (_viewModel.Items.Count == 0)
                 _viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        public void OnOptionsClicked(object sender, EventArgs args)
+        {
+            _viewModel.HeartedFilterOn = !_viewModel.HeartedFilterOn;
         }
     }
 }

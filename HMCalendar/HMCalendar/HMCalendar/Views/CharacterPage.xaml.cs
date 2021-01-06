@@ -22,25 +22,30 @@ namespace HMCalendar.Views
 		    BindingContext = _charaVM = vm;
 		}
 
-	    public void OnFavoritesClicked(object send, TappedEventArgs args)
+	    public void OnFavoritesClicked(object send, EventArgs args)
 	    {
 	        var vm = new ItemsViewModel("Favorites", _charaVM.FavoritedList);
 	        Navigation.PushAsync(new ItemsPage(vm));
 	    }
-	    public void OnLovesClicked(object send, TappedEventArgs args)
+	    public void OnLovesClicked(object send, EventArgs args)
 	    {
 	        var vm = new ItemsViewModel("Loves", _charaVM.LovedList);
 	        Navigation.PushAsync(new ItemsPage(vm));
         }
-	    public void OnLikesClicked(object send, TappedEventArgs args)
+	    public void OnLikesClicked(object send, EventArgs args)
 	    {
 	        var vm = new ItemsViewModel("Likes", _charaVM.LikedList);
 	        Navigation.PushAsync(new ItemsPage(vm));
         }
-	    public void OnDislikesClicked(object send, TappedEventArgs args)
+	    public void OnDislikesClicked(object send, EventArgs args)
 	    {
 	        var vm = new ItemsViewModel("Dislikes", _charaVM.DislikedList);
 	        Navigation.PushAsync(new ItemsPage(vm));
+        }
+
+        public void OnOptionsClicked(object sender, EventArgs args)
+        {
+
         }
     }
 }

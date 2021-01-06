@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HMCalendar.Views.CharacterListPage"
              Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Game Selection" Order="Secondary" Priority="0" Clicked="OnOptionsClicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="CharacterListView" 
-                      ItemsSource="{Binding Items}"
+            <ListView x:Name="CharacterListView"  
+                      ItemsSource="{Binding Characters}"
                       VerticalOptions="FillAndExpand"
                       ItemSelected="OnCharacterSelected">
                 <ListView.ItemTemplate>
@@ -15,8 +18,6 @@
                             <StackLayout Padding="10">
                                 <Label
                                        Text="{Binding Name}" 
-                                       LineBreakMode="NoWrap" 
-                                       Style="{DynamicResource ListItemTextStyle}" 
                                        FontSize="16" />
                             </StackLayout>
                         </ViewCell>

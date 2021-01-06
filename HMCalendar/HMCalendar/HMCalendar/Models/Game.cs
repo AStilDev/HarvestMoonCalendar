@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HMCalendar.Models
 {
-    class Game
+    public class Game
     {
         public int GameId { get; set; }
 

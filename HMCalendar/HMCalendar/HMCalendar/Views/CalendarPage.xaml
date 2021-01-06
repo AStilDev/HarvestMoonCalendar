@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:HMCalendar.Controls;assembly=HMCalendar"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="leaf.png" /><!-- Clicked="OnOptionsClicked" -->
+        <ToolbarItem Text="Game Selection" Order="Secondary" Priority="0" Clicked="OnOptionsClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <vm:CalendarViewModel />

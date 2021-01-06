@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HMCalendar.Models;
-using SQLite.Net;
+using SQLite;
 using Xamarin.Forms;
 
 namespace HMCalendar.SQLite
@@ -15,15 +15,37 @@ namespace HMCalendar.SQLite
             dbConnection = DependencyService.Get<IDBInterface>().CreateConnection();
         }
 
-        public List<Character> GetAllCharacters()
+        public List<Game> GetAllGames()
         {
-            return dbConnection.Query<Character>("Select * From [Characters]");
+            return dbConnection.Query<Game>("Select * From [Games]");
         }
 
-        public List<Character> GetCharactersByBirthday(string season)
+        public Game GetGameByName(string name)
+        {
+            var games = dbConnection.Query<Game>("Select * From [Games]" +
+                                            "Where name like '%" + name + "%'");
+
+            return games[0];
+        }
+
+        public List<Character> GetAllCharacters(int gameId)
         {
             return dbConnection.Query<Character>("Select * From [Characters]" +
-                                                 "Where birthday like '%" + season + "%'");
+                                                 "Where gameId like '%" + gameId + "%'");
+        }
+
+        public List<Character> GetCharactersByBirthday(string season, int gameId)
+        {
+            return dbConnection.Query<Character>("Select * From [Characters]" +
+                                                 "Where birthday like '%" + season + "%'" +
+                                                 "and gameId like '%" + gameId + "%'");
+        }
+
+        public List<Character> GetCharactersByKeyword(int gameId, string column, string keyword)
+        {
+            return dbConnection.Query<Character>("Select * From [Characters]" +
+                                                 "Where " + column + " like '%" + keyword + "%'" +
+                                                 "and gameId like '%" + gameId + "%'");
         }
     }
 }

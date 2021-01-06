@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using HMCalendar.Models;
 using HMCalendar.SQLite;
 using HMCalendar.Views;
+using Newtonsoft.Json;
+using Xamarin.Essentials;
 
 namespace HMCalendar.ViewModels
 {
@@ -18,7 +20,24 @@ namespace HMCalendar.ViewModels
         private string _itemListType;
         private List<string> _items;
 
-        public ObservableCollection<string> Items { get; set; }
+        private bool _heartedFilterOn;
+        //private Item _currentItem;
+
+        public ObservableCollection<Item> Items { get; set; }
+
+        public ObservableCollection<Item> HeartedItems { get; set; }
+
+        public bool HeartedFilterOn
+        {
+            get => _heartedFilterOn;
+            set
+            {
+                _heartedFilterOn = value;
+                OnPropertyChanged();
+                ExecuteLoadItemsCommand();
+            }
+        }
+
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel(string itemListType, string favlist)
@@ -26,43 +45,55 @@ namespace HMCalendar.ViewModels
             Title = itemListType;
             _itemListType = itemListType;
             _items = favlist.Split(',').ToList();
-            Items = new ObservableCollection<string>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Items = new ObservableCollection<Item>();
+            HeartedItems = new ObservableCollection<Item>();
 
-            /*MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var _item = item as Item;
-                Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
-            });*/
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
         async Task ExecuteLoadItemsCommand()
         {
-            // todo want to get user prefs from Settings.cs
-
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-
             try
             {
                 Items.Clear();
 
-                foreach (var item in _items)
+                if (HeartedFilterOn)
                 {
-                    Items.Add(item);
+                    foreach (var heartItem in HeartedItems)
+                    {
+                        Items.Add(heartItem);
+                    }
+                }
+                else
+                {
+                    foreach (var item in _items)
+                    {
+                        Items.Add(new Item
+                        {
+                            Text = item
+                        });
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
-            finally
+        }
+
+        public void FavoriteSelectedItem(Item item)
+        {
+            // add to favorites list and store
+            if (item != null && item.Favorited)
             {
-                IsBusy = false;
+                HeartedItems.Add(item);
             }
+            else
+            {
+                HeartedItems.Remove(item);
+            }
+
+            Preferences.Set("Hearted_Items", JsonConvert.SerializeObject(HeartedItems));
         }
     }
 }

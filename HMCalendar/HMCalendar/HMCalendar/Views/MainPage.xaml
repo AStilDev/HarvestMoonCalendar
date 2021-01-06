@@ -25,5 +25,16 @@
                 <views:CharacterListPage />
             </x:Arguments>
         </NavigationPage>
+
+        <NavigationPage Title="Search">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:SearchPage />
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
 </TabbedPage>

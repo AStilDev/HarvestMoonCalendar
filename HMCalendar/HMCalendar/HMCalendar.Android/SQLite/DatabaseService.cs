@@ -3,17 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using HMCalendar.Droid.SQLite;
 using HMCalendar.SQLite;
-using SQLite.Net;
-using SQLite.Net.Platform.XamarinAndroid;
+using SQLite;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(DatabaseService))]
@@ -25,6 +17,14 @@ namespace HMCalendar.Droid.SQLite
         {
         }
 
+        //public SQLiteConnection CreateConnection()
+        //{
+        //    var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+        //    var path = Path.Combine(documentsPath, "harvestmoondb.db");
+
+        //    return new SQLiteConnection(path);
+        //}
+
         public SQLiteConnection CreateConnection()
         {
             var sqliteFilename = "harvestmoondb.db";
@@ -32,8 +32,8 @@ namespace HMCalendar.Droid.SQLite
             var path = Path.Combine(documentsDirectoryPath, sqliteFilename);
 
             // This is where we copy in our pre-created database
-            if (!File.Exists(path))
-            {
+            //if (!File.Exists(path))
+            //{
                 using (var binaryReader = new BinaryReader(Android.App.Application.Context.Assets.Open(sqliteFilename)))
                 {
                     using (var binaryWriter = new BinaryWriter(new FileStream(path, FileMode.Create)))
@@ -46,10 +46,9 @@ namespace HMCalendar.Droid.SQLite
                         }
                     }
                 }
-            }
+            //}
 
-            var androidPlatform = new SQLitePlatformAndroid();
-            var conn = new SQLiteConnection(androidPlatform, path);
+            var conn = new SQLiteConnection(path);
 
             return conn;
         }
